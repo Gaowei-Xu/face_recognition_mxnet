@@ -1,5 +1,6 @@
 from __future__ import print_function
 import os
+import json
 import time
 import mxnet as mx
 import cv2
@@ -10,7 +11,7 @@ import insightface
 from insightface.utils import face_align
 
 
-# MODEL_ROOT_DIR = '/opt/ml/model'
+# MODEL_ROOT_DIR = '/opt/ml/models'
 MODEL_ROOT_DIR = './models'
 
 # options = ["retinaface_r50_v1", "retinaface_mnet025_v2"]
@@ -166,6 +167,7 @@ def invoke_face_recognition_service(image_base64_enc):
     print('    Face Detection & Alignment & Represent (Face Amount = {}) Time Cost = {} ms'.format(len(faces), 1000.0 * (t3 - t2)))
     print('    Construct Response Body = {} ms'.format(1000.0 * (t4 - t3)))
 
+    a = json.dumps(body)
     return body["faces"]
 
 

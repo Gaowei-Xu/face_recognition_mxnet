@@ -27,7 +27,7 @@ class Face(object):
 
     @property
     def representation(self):
-        return self._representation
+        return self._representation.tolist()
 
     @representation.setter
     def representation(self, embedding_vector):
